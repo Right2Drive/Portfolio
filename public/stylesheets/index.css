@@ -21,3 +21,24 @@ body {
     margin: 0 0 0 0;
     background-color: var(--background-color);
 }
+
+.content {
+
+}
+
+.header-filler {
+    height: 210px;
+    width: 100%;
+}
+
+.content-section {
+    height: 380px;
+    width: 100%;
+}
+
+.section-break {
+    background: var(--supporting-color) no-repeat scroll center;
+    width: 100%;
+    height: 1px;
+    box-shadow: var(--shadow-lighter);
+}
