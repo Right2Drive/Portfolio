@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #212121;
+    --secondary-color: #424242;
+    --background-color: #303030;
+    --primary-font: white;
+    --secondary-font: rgba(255, 255, 255, 0.7);
+    --hint-font: rgba(255, 255, 255, 0.5);
+}
+
 body {
     margin: 0 0 0 0;
+    background-color: var(--background-color);
 }
