@@ -1,24 +1,22 @@
 <div class="header header-wrapper">
     <div class="header top section">
-        <div class="header nav">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a class="nav-button" href="#">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-button" href="#">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-button" href="#">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-button" href="#">Hobbies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-button" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a class="nav-button" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-button" href="#">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-button" href="#">Experience</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-button" href="#">Hobbies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-button" href="#">Contact</a>
+            </li>
+        </ul>
     </div>
     <div class="header bottom section">
         <div class="header-col col-left">
@@ -75,6 +73,7 @@
 
     .top {
         height: 30%;
+        overflow: hidden;
     }
 
     .bottom {
@@ -87,7 +86,7 @@
     }
 
     /*@media screen and (min-width: 760px) .header-wrapper {*/
-        /*padding: 20px;*/
+    /*padding: 20px;*/
     /*}*/
 
     .header-title {
@@ -102,38 +101,32 @@
         font-weight: 500;
     }
 
-    .nav {
-        float: right;
-        height: 100%;
-        margin-right: 40px;
-        width: 32%;
-    }
-
     .nav-list {
-        display: table;
         height: 100%;
         padding: 0;
-        margin: 0;
+        margin: 0 20px 0 0;
+        overflow: hidden;
     }
 
     .nav-item {
-        display: table-cell;
+        float: right;
+        padding: 20px 20px;
         list-style: none;
-        width: 20%;
-        margin: 0;
-        padding-right: 1px;
         height: auto;
-        vertical-align: middle;
     }
 
     .nav-item a {
         display: block;
-        padding: 4px 10px;
         font-size: medium;
+        text-align: center;
         color: var(--primary-font);
         text-decoration: none;
         font-family: 'Roboto', sans-serif;
         text-transform: uppercase;
+    }
+
+    .nav-item a:hover {
+        color: var(--secondary-font);
     }
 
 </style>
