@@ -1,5 +1,5 @@
 /**
- * Created by Brad on 2016-07-31.
+ * Components will load the elements into the HTML files
  */
 $(document).ready(function() {
     /* load the components */
