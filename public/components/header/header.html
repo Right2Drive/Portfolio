@@ -18,7 +18,16 @@
         </div>
     </div>
     <div class="header bottom section">
-        <h1 class="header-title">Test</h1>
+        <div class="header-col col-left">
+            <h1 class="header-title">Test</h1>
+        </div>
+        <div class="header-col col-center">
+            <h1>Test2</h1>
+        </div>
+        <div class="header-col col-right">
+            <h1>Test3</h1>
+        </div>
+
     </div>
 </div>
 
@@ -48,7 +57,7 @@
     .section {
         position: relative;
         width: 100%;
-        padding: 0 50px;
+        padding: 0 0;
         overflow: hidden;
     }
 
@@ -58,6 +67,11 @@
 
     .bottom {
         height: 70%;
+    }
+
+    .header-col {
+        width: 33%;
+        display: inline-block;
     }
 
     /*@media screen and (min-width: 760px) .header-wrapper {*/
