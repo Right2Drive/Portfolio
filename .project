@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>nodejshelloworld</name>
-	<comment></comment>
+	<name>Portfolio</name>
+	<comment>This is my web portfolio application</comment>
 	<projects>
 	</projects>
 	<buildSpec>
 		<buildCommand>
+		    node app
 		</buildCommand>
 	</buildSpec>
 	<natures>
