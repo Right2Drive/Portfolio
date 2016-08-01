@@ -6,6 +6,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Portfolio node_modules" level="project" />
+    <orderEntry type="library" name="Portfolio node_modules" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>
