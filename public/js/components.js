@@ -3,5 +3,5 @@
  */
 $(document).ready(function() {
     /* load the components */
-    $('.header-content').load('components/header/header.html');
+    $('.header-element').load('components/header/header.html');
 })

@@ -1,12 +1,9 @@
 <div class="header header-wrapper">
-    <div class="header top">
+    <div class="header top section">
 
     </div>
-    <div class="header middle">
-        <span class="header-content">Right2Drive Portfolio</span>
-    </div>
-    <div class="header bottom">
-
+    <div class="header bottom section">
+        <h1 class="header-title">Test</h1>
     </div>
 </div>
 
@@ -21,44 +18,42 @@
     }
 
     .header-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 200px;
+        position: relative;
+        width: 100%;
+        height: 210px;
         z-index: 50;
+        text-align: center;
         /*box-shadow: 0 1px 4px #333;*/
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        line-height: 2100px;
+        /*line-height: 2100px;*/
         background-color: var(--primary-color);
         color: var(--primary-font);
     }
-    
-    .top {
-        position: absolute;
-        width: 100%;
-        height: 70px;
-    }
-    
-    .middle {
-        position: absolute;
-        top: 70px;
-        width: 100%;
-        height: 70px;
-    }
-    .bottom {
-        width: 100%;
-        top: 140px;
-        position: absolute;
-        height: 70px;
-    }
 
-    @media screen and (min-width: 760px) .header-wrapper {
-        padding: 20px;
-    }
-
-    .header-content {
+    .section {
         position: relative;
+        width: 100%;
+        padding: 0 50px;
+        overflow: hidden;
+    }
+
+    .top {
+        height: 30%;
+    }
+
+    .bottom {
+        height: 70%;
+    }
+
+    /*@media screen and (min-width: 760px) .header-wrapper {*/
+        /*padding: 20px;*/
+    /*}*/
+
+    .header-title {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 110px;
     }
 
 </style>
