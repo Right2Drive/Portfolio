@@ -1,7 +1,7 @@
 <div class="header header-wrapper">
     <div class="header top section">
         <div class="header nav">
-            <ol>
+            <ul class="nav-list">
                 <li class="nav-item">
                     <a class="nav-button" href="#">Projects</a>
                 </li>
@@ -14,7 +14,7 @@
                 <li class="nav-item">
                     <a class="nav-button" href="#">Hobbies</a>
                 </li>
-            </ol>
+            </ul>
         </div>
     </div>
     <div class="header bottom section">
@@ -88,20 +88,31 @@
 
     .nav {
         float: right;
-        margin-right: 60px;
+        height: 100%;
+        margin-right: 40px;
+        width: 25%;
+    }
+
+    .nav-list {
+        display: table;
+        height: 100%;
+        padding: 0;
+        margin: 0;
     }
 
     .nav-item {
-        display: inline-block;
+        display: table-cell;
         list-style: none;
+        width: 25%;
         margin: 0;
-        padding: 10px;
-        min-width: 60px;
-        max-width: 150px;
-        height: 100%;
+        padding-right: 1px;
+        height: auto;
+        vertical-align: middle;
     }
 
     .nav-item a {
+        display: block;
+        padding: 4px 10px;
         font-size: large;
         color: var(--primary-font);
         text-decoration: none;
