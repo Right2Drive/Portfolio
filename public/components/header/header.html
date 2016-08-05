@@ -1,32 +1,31 @@
 <div class="header header-wrapper">
-    <div class="header top section">
-        <ul class="nav-list">
-            <li class="nav-item">
-                <a class="nav-button" href="#">Projects</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-button" href="#">Skills</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-button" href="#">Experience</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-button" href="#">Hobbies</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-button" href="#">Contact</a>
-            </li>
+    <div class="header top pure-g-r">
+        <ul class="nav-list pure-u-xl-3-10 pure-u-lg-5-12 pure-u-md-13-24 pure-u-sm-5-8">
+            <div class="pure-u-5-24">
+                <li class="nav-item">
+                    <a class="nav-button" href="#">Projects</a>
+                </li>
+            </div>
+            <div class="pure-u-5-24">
+                <li class="nav-item">
+                    <a class="nav-button" href="#">Skills</a>
+                </li>
+            </div>
+            <div class="pure-u-5-24">
+                <li class="nav-item">
+                    <a class="nav-button" href="#">Experience</a>
+                </li>
+            </div>
+            <div class="pure-u-5-24">
+                <li class="nav-item">
+                    <a class="nav-button" href="#">Contact</a>
+                </li>
+            </div>
         </ul>
     </div>
-    <div class="header bottom section">
-        <div class="header-col col-left">
+    <div class="header bottom pure-g-r">
+        <div class="title-wrapper pure-u-lg-5-12">
             <span class="header-title">Brad Pfannmuller</span>
-        </div>
-        <div class="header-col col-center">
-            <!-- Insert middle content here -->
-        </div>
-        <div class="header-col col-right">
-            <!-- Insert middle content here -->
         </div>
 
     </div>
@@ -66,36 +65,26 @@
         color: var(--primary-font);
     }
 
-    .section {
-        position: relative;
-        width: 100%;
-        padding: 0 0;
-        overflow: hidden;
+    .nav-list {
+        float: right;
     }
 
-    .top {
+    .header .top {
         height: 30%;
-        overflow: hidden;
     }
 
-    .bottom {
-        height: 70%;
+    .header .bottom {
+        position: relative;
+        top: 70px;
     }
 
-    .header-col {
-        width: 33%;
-        display: inline-block;
+    .title-wrapper {
+        float: left;
+        text-align: left;
     }
-
-    /*@media screen and (min-width: 760px) .header-wrapper {*/
-    /*padding: 20px;*/
-    /*}*/
 
     .header-title {
-        position: relative;
-        display: block;
-        vertical-align: middle;
-        line-height: 170px;
+        padding-left: 40px;
 
         /* Fonts */
         font-size: 280%;
@@ -103,24 +92,14 @@
         font-weight: 500;
     }
 
-    .nav-list {
-        height: 100%;
-        padding: 0;
-        margin: 0 20px 0 0;
-        overflow: hidden;
-    }
-
     .nav-item {
-        float: right;
-        padding: 20px 20px;
         list-style: none;
-        height: auto;
     }
 
     .nav-item a {
-        display: block;
-        font-size: medium;
-        text-align: center;
+        text-align: right;
+    
+        /* Fonts */
         color: var(--primary-font);
         text-decoration: none;
         font-family: 'Roboto', sans-serif;
@@ -134,5 +113,20 @@
 </style>
 
 <script>
+    $(document).on("scroll", function(){
+        if
+        ($(document).scrollTop() > 100){
+            $("header").addClass("shrink");
+            updateSliderMargin();
+        }
+        else
+        {
+            $("header").removeClass("shrink");
+            updateSliderMargin();
+        }
+    });
 
+    function updateSliderMargin() {
+        console.log("Not implemented yet");
+    }
 </script>
