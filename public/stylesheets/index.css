@@ -9,8 +9,7 @@
     --hint-font: rgba(255, 255, 255, 0.5);
 
     /* Shadows */
-    --shadow-lighter: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --shadow-light: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-med: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     --shadow-darker: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -29,7 +28,7 @@
     height: 210px;
     z-index: 1;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: var(--shadow-dark);
     /*line-height: 2100px;*/
     background-color: var(--primary-color);
     color: var(--primary-font);
@@ -123,5 +122,6 @@ body {
     position: relative;
     margin: 50px 0;
     height: 280px;
-    background-color: gray;
+    background-color: var(--secondary-color);
+    box-shadow: var(--shadow-med);
 }
