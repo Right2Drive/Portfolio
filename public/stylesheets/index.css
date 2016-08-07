@@ -98,8 +98,10 @@ body {
     width: 100%;
 }
 
+/* Section Style*/
+
 .content-section {
-    height: 380px;
+    height: 440px;
     width: 100%;
 }
 
@@ -108,6 +110,16 @@ body {
     width: 100%;
     height: 1px;
     box-shadow: var(--shadow-light);
+}
+
+.section-title-wrapper {
+    height: 60px;
+}
+
+.section-title {
+    color: var(--secondary-font);
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
 }
 
 /*
