@@ -3,7 +3,7 @@
     --primary-color: #212121;
     --secondary-color: #424242;
     --background-color: #303030;
-    --supporting-color: #000;
+    --supporting-color: #000000;
     --primary-font: white;
     --secondary-font: rgba(255, 255, 255, 0.7);
     --hint-font: rgba(255, 255, 255, 0.5);
@@ -107,7 +107,7 @@ body {
     background: var(--supporting-color) no-repeat scroll center;
     width: 100%;
     height: 1px;
-    box-shadow: var(--shadow-lighter);
+    box-shadow: var(--shadow-light);
 }
 
 /*
@@ -124,4 +124,8 @@ body {
     height: 280px;
     background-color: var(--secondary-color);
     box-shadow: var(--shadow-med);
+}
+
+.cards-wrapper .button-wrapper {
+    background-color: var(--supporting-color);
 }
