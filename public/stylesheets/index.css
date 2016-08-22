@@ -3,19 +3,86 @@
     --primary-color: #212121;
     --secondary-color: #424242;
     --background-color: #303030;
-    --supporting-color: #000;
+    --supporting-color: #000000;
     --primary-font: white;
     --secondary-font: rgba(255, 255, 255, 0.7);
     --hint-font: rgba(255, 255, 255, 0.5);
 
     /* Shadows */
-    --shadow-lighter: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --shadow-light: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-med: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     --shadow-darker: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     --shadow-darkest: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
+
+/*
+    Header Style
+*/
+
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 210px;
+    z-index: 1;
+    text-align: center;
+    box-shadow: var(--shadow-dark);
+    /*line-height: 2100px;*/
+    background-color: var(--primary-color);
+    color: var(--primary-font);
+}
+
+.nav-list {
+    float: right;
+}
+
+.header .top {
+    height: 30%;
+}
+
+.header .bottom {
+    position: relative;
+    top: 70px;
+}
+
+.title-wrapper {
+    float: left;
+    text-align: left;
+}
+
+.header-title {
+    padding-left: 40px;
+
+    /* Fonts */
+    font-size: 280%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.nav-item {
+    list-style: none;
+}
+
+.nav-item a {
+    text-align: right;
+
+    /* Fonts */
+    color: var(--primary-font);
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+.nav-item a:hover {
+    color: var(--secondary-font);
+}
+
+
+/*
+    Body Style
+*/
 
 body {
     margin: 0 0 0 0;
@@ -31,8 +98,10 @@ body {
     width: 100%;
 }
 
+/* Section Style*/
+
 .content-section {
-    height: 380px;
+    height: 440px;
     width: 100%;
 }
 
@@ -40,5 +109,37 @@ body {
     background: var(--supporting-color) no-repeat scroll center;
     width: 100%;
     height: 1px;
-    box-shadow: var(--shadow-lighter);
+    box-shadow: var(--shadow-light);
+}
+
+.section-title-wrapper {
+    height: 60px;
+}
+
+.section-title {
+    color: var(--secondary-font);
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
+    height: 100%;
+}
+
+/*
+    Card Style
+*/
+
+.cards-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.card {
+    position: relative;
+    margin: 0;
+    height: 280px;
+    background-color: var(--secondary-color);
+    box-shadow: var(--shadow-med);
+}
+
+.cards-wrapper .button-wrapper {
+    background-color: var(--supporting-color);
 }
