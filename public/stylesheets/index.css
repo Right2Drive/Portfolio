@@ -141,7 +141,8 @@ body {
 }
 
 .section-title span {
-    top: 20px;
+    position: relative;
+    top: 10px;
 }
 
 /*
@@ -155,7 +156,7 @@ body {
 .card {
     position: relative;
     margin: 0;
-    height: 315px;
+    height: 320px;
     background-color: var(--secondary-color);
     box-shadow: var(--shadow-med);
 }
