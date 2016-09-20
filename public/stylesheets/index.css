@@ -164,7 +164,7 @@ body {
 .card-header {
     position: relative;
     text-align: left;
-    height: 55px;
+    height: 60px;
     top: 0;
     width: 100%;
     background-color: var(--primary-color);
@@ -173,8 +173,7 @@ body {
 
 .card-title {
     position: absolute;
-    bottom: 0;
-    margin: 10px 0;
+    bottom: 14px;
 
     color: var(--secondary-font);
     font-family: 'Roboto', sans-serif;
