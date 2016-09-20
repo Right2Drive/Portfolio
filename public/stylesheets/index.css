@@ -3,7 +3,7 @@
     --primary-color: #212121;
     --secondary-color: #424242;
     --background-color: #303030;
-    --supporting-color: #000000;
+    --supporting-color: #282828;
     --primary-font: white;
     --secondary-font: rgba(255, 255, 255, 0.7);
     --hint-font: rgba(255, 255, 255, 0.5);
@@ -151,9 +151,29 @@ body {
 .card {
     position: relative;
     margin: 0;
-    height: 280px;
+    height: 300px;
     background-color: var(--secondary-color);
     box-shadow: var(--shadow-med);
+}
+
+.card-header {
+    position: relative;
+    text-align: left;
+    height: 55px;
+    top: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow-light);
+}
+
+.card-title {
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0;
+
+    color: var(--secondary-font);
+    font-family: 'Roboto', sans-serif;
+    font-size: x-large;
 }
 
 .cards-wrapper .button-wrapper {
