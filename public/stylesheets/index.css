@@ -88,6 +88,7 @@
     color: var(--primary-font);
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
+    font-size: medium;
     text-transform: uppercase;
 }
 
@@ -175,8 +176,9 @@ body {
     position: absolute;
     bottom: 14px;
 
-    color: var(--secondary-font);
+    color: var(--primary-font);
     font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     font-size: x-large;
 }
 
