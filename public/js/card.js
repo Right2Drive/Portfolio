@@ -18,7 +18,14 @@ function Card(name, images, contents) {
     }
 
     this.loadOnPage = function() {
-        var card = createCard("Future Blue Web Team");
+        var card = createCard(this.name);
+        var section = document.getElementById('section-A');
+        var cardWrappers = section.getElementsByClassName('cards-wrapper');
+        if (cardWrappers.length === 1) {
+            cardWrappers[0].insertBefore(card, cardWrappers[0][3]);
+        } else {
+            throw "There are more than one 'cards-wrapper' classes per section";
+        }
     }
 }
 
