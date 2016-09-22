@@ -10,7 +10,7 @@ var CARD_MOD = (function() {
     function createCard(name) {
         // Create the components of the card
         var card = document.createElement("DIV");
-        card.className = "card pure-u-19-24";
+        card.className = "card";
 
         var headerWrapper = document.createElement("DIV");
         headerWrapper.className = "card-header pure-g-r";
@@ -48,23 +48,35 @@ var CARD_MOD = (function() {
 
         this.loadRight = function() {
 
-        }
+        };
 
         this.loadLeft = function() {
 
-        }
+        };
+
+        this.destructLeft = function() {
+
+        };
+
+        this.destructRight = function() {
+
+        };
 
         this.loadOnPage = function() {
             var card = createCard(this.name);
             var section = document.getElementById('section-A');
-            var cardWrappers = section.getElementsByClassName('cards-wrapper');
-            if (cardWrappers.length === 1) {
-                cardWrappers[0].insertBefore(card, cardWrappers[0][1]);
+            var cardTarget = section.getElementsByClassName('card-target');
+            if (cardTarget.length === 1) {
+                cardTarget[0].appendChild(card);
             } else {
                 throw "There are more than one 'cards-wrapper' classes per section";
             }
         }
-    }
+
+        var destroy = function() {
+            
+        };
+    };
 
     return my;
 }());

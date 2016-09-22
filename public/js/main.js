@@ -3,7 +3,8 @@
  */
 
 document.addEventListener("DOMContentLoaded", function(event) {
-
+    var card = new CARD_MOD.Card('Test Name', null, null);
+    card.loadOnPage();
 });
 
 // TODO if not supported (ie. IE 8 or below), output a message to user
