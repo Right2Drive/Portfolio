@@ -74,7 +74,7 @@ var CARD_MOD = (function() {
         }
 
         var destroy = function() {
-            
+
         };
     };
 
