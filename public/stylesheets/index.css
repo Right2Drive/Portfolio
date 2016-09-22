@@ -162,6 +162,18 @@ body {
     box-shadow: var(--shadow-med);
 }
 
+.card-left {
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+}
+
+.card-right {
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+}
+
 .card-header {
     position: relative;
     text-align: left;

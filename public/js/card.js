@@ -23,7 +23,7 @@ var CARD_MOD = (function() {
 
         var title = document.createElement("SPAN");
         title.className = "card-title";
-        title.value = name;
+        title.textContent = name;
 
         var content = document.createElement("DIV");
         content.className = "card-content-wrapper";
@@ -51,7 +51,14 @@ var CARD_MOD = (function() {
         };
 
         this.loadLeft = function() {
-
+            var card = createCard(this.name);
+            var section = document.getElementById('section-A');
+            var cardLeftTarget = section.getElementsByClassName('card-left-target');
+            if (cardLeftTarget.length === 1) {
+                cardLeftTarget[0].appendChild(card);
+            } else {
+                throw "There are more than one 'cards-wrapper' classes per section";
+            }
         };
 
         this.destructLeft = function() {
@@ -59,7 +66,14 @@ var CARD_MOD = (function() {
         };
 
         this.destructRight = function() {
-
+            var card = createCard(this.name);
+            var section = document.getElementById('section-A');
+            var cardRightTarget = section.getElementsByClassName('card-right-target');
+            if (cardRightTarget.length === 1) {
+                cardRightTarget[0].appendChild(card);
+            } else {
+                throw "There are more than one 'cards-wrapper' classes per section";
+            }
         };
 
         this.loadOnPage = function() {
