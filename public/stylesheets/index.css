@@ -118,6 +118,7 @@ body {
 /* Section Style*/
 
 .content-section {
+    position: relative;
     height: 600px;
     width: 100%;
 }
@@ -153,6 +154,7 @@ body {
 .card.mdl-card {
     width: 400px;
     height: 320px;
+    position: absolute;
     background: var(--secondary-color);
 }
 

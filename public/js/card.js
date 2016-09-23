@@ -50,7 +50,11 @@ var CARD_MOD = (function() {
         };
 
         this.loadLeft = function() {
-
+            var card = cardTemplate.cloneNode(true);
+            card.className = "card card-left mdl-card mdl-shadow--4dp";
+            card.childNodes[0].childNodes[0].textContent = title;
+            var sections = document.getElementsByClassName('content-section');
+            sections[section].appendChild(card);
         };
 
         this.destructLeft = function() {
@@ -63,7 +67,7 @@ var CARD_MOD = (function() {
 
         this.loadCenter = function() {
             var card = cardTemplate.cloneNode(true);
-            card.className += " card-center";
+            card.className = "card card-center mdl-card mdl-shadow--6dp";
             card.childNodes[0].childNodes[0].textContent = title;
             var sections = document.getElementsByClassName('content-section');
             sections[section].appendChild(card);
