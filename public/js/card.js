@@ -3,62 +3,54 @@
  */
 
 var CARD_MOD = (function() {
-    var my = {};
+    var my = {},
+        cardTemplate = createCardTemplate();
 
     //////////////////////// Private Methods  /////////////////////////////
 
-    function createCard(name) {
-        // Create the components of the card
+    function createCardTemplate() {
         var card = document.createElement("DIV");
-        card.className = "card";
+        card.className = "card mdl-card mdl-shadow--2dp";
 
-        var headerWrapper = document.createElement("DIV");
-        headerWrapper.className = "card-header pure-g-r";
+        var cardTitleWrapper = document.createElement("DIV");
+        cardTitleWrapper.className = "mdl-card__title mdl-card--expand";
+        card.appendChild(cardTitleWrapper);
 
-        var headerSpace = document.createElement("DIV");
-        headerSpace.className = "pure-u-1-24";
+        var cardTitleHeader = document.createElement("H2");
+        cardTitleHeader.className = "mdl-card__title-text";
+        cardTitleWrapper.appendChild(cardTitleHeader);
 
-        var titleWrapper = document.createElement("DIV");
-        titleWrapper.className = "pure-u-4-24";
+        var supportText = document.createElement("DIV");
+        supportText.className = "mdl-card__supporting-text";
+        supportText.textContent = "this is a test with what is going on I don't know if it will do it the right size or not but I would be prettyy unhapy if it doesn't work sadface";
+        card.appendChild(supportText);
 
-        var title = document.createElement("SPAN");
-        title.className = "card-title";
-        title.textContent = name;
+        var cardContent = document.createElement("DIV");
+        cardContent.className = "mdl-card__actions mdl-card--border";
+        card.appendChild(cardContent);
 
-        var content = document.createElement("DIV");
-        content.className = "card-content-wrapper";
-
-        // Construct the element using the various components generated
-        titleWrapper.appendChild(title);
-        headerWrapper.appendChild(headerSpace);
-        headerWrapper.appendChild(titleWrapper)
-        card.appendChild(headerWrapper);
-        card.appendChild(content);
+        var cardButton = document.createElement("A");
+        cardButton.className = "mdl-button mdl-js-button mdl-js-ripple-effect";
+        cardButton.textContent = "See More";
+        cardContent.appendChild(cardButton);
 
         return card;
     }
 
     /////////////////////////// Card Object /////////////////////////////////
 
-    my.Card = function(name, images, contents) {
-        this.name = name;
-        this.images = images;
-        this.contents = contents;
-
+    my.Card = function(title, image, content, section) {
+        this.title = title;
+        this.image = image;
+        this.content = content;
+        this.section = section;
 
         this.loadRight = function() {
 
         };
 
         this.loadLeft = function() {
-            var card = createCard(this.name);
-            var section = document.getElementById('section-A');
-            var cardLeftTarget = section.getElementsByClassName('card-left-target');
-            if (cardLeftTarget.length === 1) {
-                cardLeftTarget[0].appendChild(card);
-            } else {
-                throw "There are more than one 'cards-wrapper' classes per section";
-            }
+
         };
 
         this.destructLeft = function() {
@@ -66,25 +58,15 @@ var CARD_MOD = (function() {
         };
 
         this.destructRight = function() {
-            var card = createCard(this.name);
-            var section = document.getElementById('section-A');
-            var cardRightTarget = section.getElementsByClassName('card-right-target');
-            if (cardRightTarget.length === 1) {
-                cardRightTarget[0].appendChild(card);
-            } else {
-                throw "There are more than one 'cards-wrapper' classes per section";
-            }
+
         };
 
-        this.loadOnPage = function() {
-            var card = createCard(this.name);
-            var section = document.getElementById('section-A');
-            var cardTarget = section.getElementsByClassName('card-target');
-            if (cardTarget.length === 1) {
-                cardTarget[0].appendChild(card);
-            } else {
-                throw "There are more than one 'cards-wrapper' classes per section";
-            }
+        this.loadCenter = function() {
+            var card = cardTemplate.cloneNode(true);
+            card.className += " card-center";
+            card.childNodes[0].childNodes[0].textContent = title;
+            var sections = document.getElementsByClassName('content-section');
+            sections[section].appendChild(card);
         }
 
         var destroy = function() {

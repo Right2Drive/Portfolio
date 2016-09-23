@@ -118,7 +118,7 @@ body {
 /* Section Style*/
 
 .content-section {
-    height: 440px;
+    height: 600px;
     width: 100%;
 }
 
@@ -150,51 +150,47 @@ body {
     Card Style
 */
 
-.cards-wrapper {
-    text-align: center;
-}
-
-.card {
-    position: relative;
-    margin: 0;
+.card.mdl-card {
+    width: 400px;
     height: 320px;
-    background-color: var(--secondary-color);
-    box-shadow: var(--shadow-med);
+    background: var(--secondary-color);
 }
 
-.card-left {
-    position: absolute;
-    left: 0;
-    overflow: hidden;
+.card-center.mdl-card {
+    left: calc(50% - 200px);
+    top: 200px;
+    z-index: 10;
 }
 
-.card-right {
+.card-left.mdl-card {
+    left: calc(25% - 200px);
+    top: 150px;
+    z-index: 8;
+}
+
+.card > .mdl-card__title {
+    color: var(--primary-font);
+    background:
+            url('../images/resume.png') bottom right 15% no-repeat var(--primary-color);
+}
+
+.card > .mdl-card__supporting-text {
+    color: var(--secondary-font);
+}
+
+.card .mdl-button {
+    color: lightblue;
+}
+
+.content-section .button-wrapper {
     position: absolute;
-    overflow: hidden;
+    visibility: hidden;
+}
+
+.content-section .button-right {
     right: 0;
 }
 
-.card-header {
-    position: relative;
-    text-align: left;
-    height: 60px;
-    top: 0;
-    width: 100%;
-    background-color: var(--primary-color);
-    box-shadow: var(--shadow-light);
-}
-
-.card-title {
-    position: absolute;
-    bottom: 14px;
-
-    color: var(--primary-font);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: x-large;
-}
-
-.cards-wrapper .button-wrapper {
-    position: relative;
-    top: 125px;
+.content-section .button-left {
+    left: 0;
 }
