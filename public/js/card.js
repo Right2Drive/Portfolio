@@ -44,6 +44,8 @@ var CARD_MOD = (function() {
         this.image = image;
         this.content = content;
         this.section = section;
+        this.card = null;
+        this.position = null;
 
         this.loadRight = function() {
 
@@ -65,16 +67,18 @@ var CARD_MOD = (function() {
 
         };
 
-        this.loadCenter = function() {
+        function load(position) {
             var card = cardTemplate.cloneNode(true);
-            card.className = "card card-center mdl-card mdl-shadow--6dp";
+            card.className = "card mdl-card mdl-shadow--6dp";
             card.childNodes[0].childNodes[0].textContent = title;
             var sections = document.getElementsByClassName('content-section');
             sections[section].appendChild(card);
         }
 
-        var destroy = function() {
-
+        function destroy() {
+            if (this.card) {
+                this.card.parentElement.removeChild(this.card);
+            }
         };
     };
 
