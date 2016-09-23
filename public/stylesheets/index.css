@@ -164,10 +164,22 @@ body {
     z-index: 10;
 }
 
+.layer-middle.mdl-card {
+    top: 180px;
+    z-index: 8;
+}
+
+.layer-back.mdl-card {
+    top: 100px;
+    z-index: 6;
+}
+
 .card-left.mdl-card {
     left: calc(25% - 200px);
-    top: 150px;
-    z-index: 8;
+}
+
+.card-far-left.mdl-card {
+    left: -5%;
 }
 
 .card > .mdl-card__title {
