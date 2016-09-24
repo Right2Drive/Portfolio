@@ -25,6 +25,7 @@ var SECTION_MOD = (function() {
        return sectionBreak;
    }
 
+   // TODO remove buttons if not being used
    function createButtonTemplate(side) {
        var buttonWrapper = document.createElement("DIV");
        buttonWrapper.className = "button-wrapper button-" + side;
@@ -40,13 +41,20 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
-    my.Section = function(row, next) {
+    my.Section = function(row, name) {
         this.row = row;
         this.cards = [];
         this.sectionLoaded = false;
 
         this.load = function() {
             var section = sectionTemplate.cloneNode(true);
+
+            // Set section name
+            var sectionTitle = document.createElement("SPAN");
+            sectionTitle.className = "section-title";
+            sectionTitle.textContent = name;
+            section.appendChild(sectionTitle);
+
             var sectionBreak = breakTemplate.cloneNode(true);
             var contents = document.getElementsByClassName("content");
             if (contents.length !== 1) {

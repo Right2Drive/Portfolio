@@ -132,16 +132,14 @@ body {
     box-shadow: var(--shadow-light);
 }
 
-.section-title-wrapper {
-    height: 60px;
-    margin-top: 20px;
-}
-
 .section-title {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
     color: var(--secondary-font);
     font-family: 'Roboto', sans-serif;
-    font-size: xx-large;
-    height: 100%;
+    font-size: 60px;
 }
 
 .section-title span {

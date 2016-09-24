@@ -3,13 +3,13 @@
  */
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    var section1 = new SECTION_MOD.Section(0);
+    var section1 = new SECTION_MOD.Section(0, "Projects");
     section1.load();
     section1.loadCards();
-    var section2 = new SECTION_MOD.Section(1);
+    var section2 = new SECTION_MOD.Section(1, "Skills");
     section2.load();
     section2.loadCards();
-    var section3 = new SECTION_MOD.Section(2);
+    var section3 = new SECTION_MOD.Section(2, "Organizations");
     section3.load();
     section3.loadCards();
 });
