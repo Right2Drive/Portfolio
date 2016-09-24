@@ -58,11 +58,11 @@ var CARD_MOD = (function() {
 
     /////////////////////////// Card Object /////////////////////////////////
 
-    my.Card = function(title, image, content, section) {
+    my.Card = function(title, image, content, row) {
         this.title = title;
         this.image = image;
         this.content = content;
-        this.section = section;
+        this.section = row;
         this.card = null;
         this.position = null;
 
@@ -83,7 +83,7 @@ var CARD_MOD = (function() {
             card.className = newClassName;
             card.childNodes[0].childNodes[0].textContent = title;
             var sections = document.getElementsByClassName('content-section');
-            sections[section].appendChild(card);
+            sections[row].appendChild(card);
         }
 
         function destroy() {
