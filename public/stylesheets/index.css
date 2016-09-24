@@ -153,7 +153,7 @@ body {
 
 .card.mdl-card {
     width: 400px;
-    height: 320px;
+    height: 350px;
     position: absolute;
     background: var(--secondary-color);
 }
@@ -165,7 +165,7 @@ body {
 }
 
 .layer-middle.mdl-card {
-    top: 180px;
+    top: 160px;
     z-index: 8;
 }
 
@@ -178,8 +178,16 @@ body {
     left: calc(25% - 200px);
 }
 
+.card-right.mdl-card {
+    right: calc(25% - 200px);
+}
+
 .card-far-left.mdl-card {
-    left: -5%;
+    left: -10%;
+}
+
+.card-far-right.mdl-card {
+    right: -10%;
 }
 
 .card > .mdl-card__title {
