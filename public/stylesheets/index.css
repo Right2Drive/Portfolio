@@ -104,6 +104,8 @@
 body {
     margin: 0 0 0 0;
     background-color: var(--background-color);
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .content {
