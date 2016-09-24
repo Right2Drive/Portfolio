@@ -9,7 +9,7 @@ var SECTION_MOD = (function() {
 
    function createSectionTemplate() {
        var section = document.createElement("DIV");
-        section.className - "content-section";
+        section.className = "content-section";
 
        var buttonLeft = createButtonTemplate("left");
        section.appendChild(buttonLeft);
@@ -39,7 +39,9 @@ var SECTION_MOD = (function() {
        button.appendChild(buttonImage);
    }
 
-    my.Section = function() {
+    my.Section = function(row) {
+        this.row = row;
+        this.cards = [];
 
         this.load = function() {
             var section = sectionTemplate.cloneNode(true);
@@ -51,9 +53,15 @@ var SECTION_MOD = (function() {
             contents[0].appendChild(section);
             contents[0].appendChild(sectionBreak);
 
-            
+            // Loading cards
+            for (var position in CARD_MOD.Position) {
+                if (!CARD_MOD.Position.hasOwnProperty(position)) continue;
+                var card = CARD_MOD.Card("Title", null, null, this.row);
+                this.cards.push(card);
+                card.load(position);
+            }
         }
-    }
+    };
 
    return my;
-});
+}());

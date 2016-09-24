@@ -54,7 +54,7 @@ var CARD_MOD = (function() {
     my.Direction = {
         LEFT : 55,
         RIGHT : 56
-    }
+    };
 
     /////////////////////////// Card Object /////////////////////////////////
 
@@ -68,7 +68,7 @@ var CARD_MOD = (function() {
 
         this.shift = function(direction) {
 
-        }
+        };
 
         this.load = function(position) {
             var card = cardTemplate.cloneNode(true);
@@ -85,13 +85,13 @@ var CARD_MOD = (function() {
             card.childNodes[0].childNodes[0].textContent = this.title;
             var sections = document.getElementsByClassName('content-section');
             sections[row].appendChild(card);
-        }
+        };
 
         function destroy() {
             if (this.card) {
                 this.card.parentElement.removeChild(this.card);
             }
-        };
+        }
     };
 
     return my;
