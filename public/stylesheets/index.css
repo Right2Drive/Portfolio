@@ -104,6 +104,8 @@
 body {
     margin: 0 0 0 0;
     background-color: var(--background-color);
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .content {
@@ -118,7 +120,8 @@ body {
 /* Section Style*/
 
 .content-section {
-    height: 440px;
+    position: relative;
+    height: 600px;
     width: 100%;
 }
 
@@ -129,16 +132,14 @@ body {
     box-shadow: var(--shadow-light);
 }
 
-.section-title-wrapper {
-    height: 60px;
-    margin-top: 20px;
-}
-
 .section-title {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
     color: var(--secondary-font);
     font-family: 'Roboto', sans-serif;
-    font-size: xx-large;
-    height: 100%;
+    font-size: 60px;
 }
 
 .section-title span {
@@ -150,39 +151,72 @@ body {
     Card Style
 */
 
-.cards-wrapper {
-    text-align: center;
-}
-
-.card {
-    position: relative;
-    margin: 0;
-    height: 320px;
-    background-color: var(--secondary-color);
-    box-shadow: var(--shadow-med);
-}
-
-.card-header {
-    position: relative;
-    text-align: left;
-    height: 60px;
-    top: 0;
-    width: 100%;
-    background-color: var(--primary-color);
-    box-shadow: var(--shadow-light);
-}
-
-.card-title {
+.card.mdl-card {
+    width: 400px;
+    height: 350px;
     position: absolute;
-    bottom: 14px;
-
-    color: var(--primary-font);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: x-large;
+    background: var(--secondary-color);
 }
 
-.cards-wrapper .button-wrapper {
-    position: relative;
-    top: 125px;
+.card-center.mdl-card {
+    left: calc(50% - 200px);
+    top: 200px;
+    z-index: 10;
+}
+
+.layer-middle.mdl-card {
+    top: 160px;
+    z-index: 8;
+}
+
+.layer-back.mdl-card {
+    top: 100px;
+    z-index: 6;
+}
+
+.layer-hidden.mdl-card {
+    visibility: hidden;
+}
+
+.card-left.mdl-card {
+    left: calc(25% - 200px);
+}
+
+.card-right.mdl-card {
+    right: calc(25% - 200px);
+}
+
+.card-far-left.mdl-card {
+    left: -10%;
+}
+
+.card-far-right.mdl-card {
+    right: -10%;
+}
+
+.card > .mdl-card__title {
+    color: var(--primary-font);
+    background:
+            url('../images/resume.png') bottom right 15% no-repeat var(--primary-color);
+}
+
+.card > .mdl-card__supporting-text {
+    color: var(--secondary-font);
+}
+
+.card .mdl-button {
+    color: lightblue;
+}
+
+.content-section .button-wrapper {
+    position: absolute;
+    visibility: hidden;
+}
+
+.content-section .button-right {
+    right: 0;
+}
+
+.content-section .button-left {
+    left: 0;
 }
