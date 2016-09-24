@@ -176,6 +176,10 @@ body {
     z-index: 6;
 }
 
+.layer-hidden.mdl-card {
+    visibility: hidden;
+}
+
 .card-left.mdl-card {
     left: calc(25% - 200px);
 }

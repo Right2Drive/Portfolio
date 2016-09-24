@@ -37,11 +37,13 @@ var SECTION_MOD = (function() {
        buttonImage.className = "material-icons";
        buttonImage.textContent = "keyboard_arrow_" + side + "_black";
        button.appendChild(buttonImage);
+       return buttonWrapper;
    }
 
-    my.Section = function(row) {
+    my.Section = function(row, next) {
         this.row = row;
         this.cards = [];
+        this.sectionLoaded = false;
 
         this.load = function() {
             var section = sectionTemplate.cloneNode(true);
@@ -50,17 +52,28 @@ var SECTION_MOD = (function() {
             if (contents.length !== 1) {
                 console.log("There is more than one content section");
             }
-            contents[0].appendChild(section);
-            contents[0].appendChild(sectionBreak);
-
-            // Loading cards
-            for (var position in CARD_MOD.Position) {
-                if (!CARD_MOD.Position.hasOwnProperty(position)) continue;
-                var card = CARD_MOD.Card("Title", null, null, this.row);
-                this.cards.push(card);
-                card.load(position);
+            if (this.row !== 0) {
+                contents[0].appendChild(sectionBreak);
             }
+            contents[0].appendChild(section);
+            this.sectionLoaded = true;
+            console.log("Section " + this.row + " loaded");
+        };
+
+        this.loadCards = function() {
+            if (!this.sectionLoaded) {
+                return;
+            }
+            // Loading cards
+            for (var key in CARD_MOD.Position) {
+                if (!CARD_MOD.Position.hasOwnProperty(key)) continue;
+                var card = new CARD_MOD.Card("Title", null, null, this.row);
+                this.cards.push(card);
+                card.load(CARD_MOD.Position[key]);
+            }
+            console.log("Section " + this.row + " cards loaded");
         }
+        console.log("Section " + this.row + " generated");
     };
 
    return my;

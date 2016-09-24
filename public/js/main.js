@@ -3,8 +3,15 @@
  */
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    var section = new SECTION_MOD.Section(0);
-    section.load();
+    var section1 = new SECTION_MOD.Section(0);
+    section1.load();
+    section1.loadCards();
+    var section2 = new SECTION_MOD.Section(1);
+    section2.load();
+    section2.loadCards();
+    var section3 = new SECTION_MOD.Section(2);
+    section3.load();
+    section3.loadCards();
 });
 
 // TODO if not supported (ie. IE 8 or below), output a message to user
