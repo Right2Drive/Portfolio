@@ -62,7 +62,7 @@ var CARD_MOD = (function() {
         this.title = title;
         this.image = image;
         this.content = content;
-        this.section = row;
+        this.row = row;
         this.card = null;
         this.position = null;
 
@@ -72,6 +72,7 @@ var CARD_MOD = (function() {
 
         this.load = function(position) {
             var card = cardTemplate.cloneNode(true);
+            this.card = card;
             var newClassName = "card mdl-card " + position;
             if (position === my.Position.CENTER) {
                 newClassName += " mdl-shadow--6dp";
@@ -81,7 +82,7 @@ var CARD_MOD = (function() {
                 newClassName += " mdl-shadow--2dp";
             }
             card.className = newClassName;
-            card.childNodes[0].childNodes[0].textContent = title;
+            card.childNodes[0].childNodes[0].textContent = this.title;
             var sections = document.getElementsByClassName('content-section');
             sections[row].appendChild(card);
         }

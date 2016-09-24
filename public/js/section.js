@@ -50,6 +50,8 @@ var SECTION_MOD = (function() {
             }
             contents[0].appendChild(section);
             contents[0].appendChild(sectionBreak);
+
+            
         }
     }
 
