@@ -2,19 +2,20 @@
  * Shrink the header as you scroll down
  */
 
-$(document).on("scroll", function(){
-    if
-    ($(document).scrollTop() > 100){
-        $("header").addClass("shrink");
-        updateSliderMargin();
-    }
-    else
-    {
-        $("header").removeClass("shrink");
-        updateSliderMargin();
-    }
-});
+var HEADER_MOD = (function() {
+    var my = {};
 
-function updateSliderMargin() {
-    console.log("Not implemented yet");
-}
+    my.headerScroll = function() {
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 250,
+            header = document.querySelector('header');
+
+        if (distanceY > shrinkOn) {
+            header.className = "shrink";
+        } else {
+            header.className = "expand";
+        }
+    };
+
+    return my;
+}());

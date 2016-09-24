@@ -3,6 +3,9 @@
  */
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    // Add event listener to shrink header if scrolled past a certain point
+    window.addEventListener('scroll', HEADER_MOD.headerScroll);
+
     var section1 = new SECTION_MOD.Section(0, "Projects");
     section1.load();
     section1.loadCards();
@@ -13,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     section3.load();
     section3.loadCards();
 });
+
+
 
 // TODO if not supported (ie. IE 8 or below), output a message to user
 /*
