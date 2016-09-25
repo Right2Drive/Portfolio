@@ -18,4 +18,4 @@ var HEADER_MOD = (function() {
     };
 
     return my;
-}());
+}(HEADER_MOD || {}));

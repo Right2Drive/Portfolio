@@ -41,12 +41,26 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
-    my.Section = function(row, name) {
+    function loadJSON(path, callback) {
+
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
+        xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                callback(xobj.responseText);
+            }
+        };
+        xobj.send(null);
+    }
+
+    my.Section = function(row, sectionInfo) {
         this.row = row;
         this.cards = [];
-        this.sectionLoaded = false;
+        this.liveCards = null;
 
-        this.load = function() {
+        var load = function(name) {
             var section = sectionTemplate.cloneNode(true);
 
             // Set section name
@@ -64,11 +78,10 @@ var SECTION_MOD = (function() {
                 contents[0].appendChild(sectionBreak);
             }
             contents[0].appendChild(section);
-            this.sectionLoaded = true;
             console.log("Section " + this.row + " loaded");
         };
 
-        this.loadCards = function() {
+        var loadCards = function(cards) {
             if (!this.sectionLoaded) {
                 return;
             }
@@ -80,9 +93,19 @@ var SECTION_MOD = (function() {
                 card.load(CARD_MOD.Position[key]);
             }
             console.log("Section " + this.row + " cards loaded");
-        }
+        };
+
+        var construct = function(sectionInfo) {
+            load(sectionInfo[row]['title']);
+            // Load all of the cards needed by this section
+            // TODO should load them into queue until it's full
+        };
+
+        // Call the constructor
+        construct();
+        // Log the section generation
         console.log("Section " + this.row + " generated");
     };
 
    return my;
-}());
+}(SECTION_MOD || {}));

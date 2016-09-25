@@ -5,9 +5,9 @@
 var QUEUE_MOD = (function() {
    var my = {};
 
-   my.Queue = new function(cardArray) {
-       this.size = cardArray.length;
-       var queue = cardArray; // TODO check safety
+   my.Queue = new function(size) {
+       this.size = size;
+       var queue = []
 
        this.pushLeft = function(item) {
            queue.unshift(item);
@@ -18,5 +18,11 @@ var QUEUE_MOD = (function() {
            queue.push(item);
            return queue.shift();
        };
-   }
-}());
+
+       this.addCard = function(card) {
+           if (queue.length < size) {
+               queue.push(card);
+           }
+       };
+   };
+}(QUEUE_MOD || {}));
