@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Projects",
+    "sections": [
+      {
+        "section": 1,
+        "type": "text",
+        "content": "This is some text to use as an example of how the format of the large cards will be divided into a series of sections which should make it relatively easy to update my website when the time comes to do so. This however does make it a relatively complicated project, but I look forward to the end result"
+      },
+      {
+        "section": 2,
+        "type": "image",
+        "content": "/images/web.png"
+      }
+    ]
+  }
+]

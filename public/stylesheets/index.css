@@ -116,7 +116,7 @@ header.expand .header-title {
 
 
 /*
-    Body Style
+    Content
 */
 
 body {
@@ -139,7 +139,7 @@ body {
 
 .content-section {
     position: relative;
-    height: 600px;
+    height: 650px;
     width: 100%;
 }
 
