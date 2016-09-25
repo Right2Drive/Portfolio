@@ -41,8 +41,8 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
+   // TODO should be moved into its own module
     function loadJSON(path, callback) {
-
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
