@@ -95,4 +95,4 @@ var CARD_MOD = (function() {
     };
 
     return my;
-}(CARD_MOD || {}));
+}());

@@ -5,8 +5,8 @@
 var QUEUE_MOD = (function() {
    var my = {};
 
-   my.Queue = new function(size) {
-       this.size = size;
+   my.Queue = new function(length) {
+       this.length = length;
        var queue = []
 
        this.pushLeft = function(item) {
@@ -20,9 +20,9 @@ var QUEUE_MOD = (function() {
        };
 
        this.addCard = function(card) {
-           if (queue.length < size) {
+           if (queue.length < length) {
                queue.push(card);
            }
        };
    };
-}(QUEUE_MOD || {}));
+}());

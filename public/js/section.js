@@ -7,6 +7,8 @@ var SECTION_MOD = (function() {
        sectionTemplate = createSectionTemplate(),
        breakTemplate = createBreakTemplate();
 
+    var NUMBER_OF_CARDS = 5;
+
    function createSectionTemplate() {
        var section = document.createElement("DIV");
         section.className = "content-section";
@@ -41,24 +43,11 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
-   // TODO should be moved into its own module
-    function loadJSON(path, callback) {
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
-        xobj.onreadystatechange = function () {
-            if (xobj.readyState == 4 && xobj.status == "200") {
-                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-                callback(xobj.responseText);
-            }
-        };
-        xobj.send(null);
-    }
-
     my.Section = function(row, sectionInfo) {
         this.row = row;
+        this.sectionInfo = sectionInfo;
         this.cards = [];
-        this.liveCards = null;
+        this.liveCards = new QUEUE_MOD.Queue(6);
 
         var load = function(name) {
             var section = sectionTemplate.cloneNode(true);
@@ -108,4 +97,4 @@ var SECTION_MOD = (function() {
     };
 
    return my;
-}(SECTION_MOD || {}));
+}());
