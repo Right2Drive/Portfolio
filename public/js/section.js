@@ -7,6 +7,8 @@ var SECTION_MOD = (function() {
        sectionTemplate = createSectionTemplate(),
        breakTemplate = createBreakTemplate();
 
+    var NUMBER_OF_CARDS = Object.keys(CARD_MOD.Position).length;
+
    function createSectionTemplate() {
        var section = document.createElement("DIV");
         section.className = "content-section";
@@ -41,46 +43,75 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
-    my.Section = function(row, name) {
+    my.Section = function(row, withCards) {
+        if (typeof(withCards) === 'undefined') {
+            this.withCards = true;
+        } else {
+            this.withCards = withCards;
+        }
         this.row = row;
         this.cards = [];
-        this.sectionLoaded = false;
+        this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
+        this.sectionTitle = null;
 
-        this.load = function() {
+        this.loadSection = function() {
             var section = sectionTemplate.cloneNode(true);
 
             // Set section name
             var sectionTitle = document.createElement("SPAN");
             sectionTitle.className = "section-title";
-            sectionTitle.textContent = name;
             section.appendChild(sectionTitle);
+            this.sectionTitle = sectionTitle;
 
             var sectionBreak = breakTemplate.cloneNode(true);
             var contents = document.getElementsByClassName("content");
             if (contents.length !== 1) {
-                console.log("There is more than one content section");
+                throw "There is more than one content section";
             }
             if (this.row !== 0) {
                 contents[0].appendChild(sectionBreak);
             }
             contents[0].appendChild(section);
-            this.sectionLoaded = true;
             console.log("Section " + this.row + " loaded");
         };
 
         this.loadCards = function() {
-            if (!this.sectionLoaded) {
-                return;
-            }
+
             // Loading cards
             for (var key in CARD_MOD.Position) {
                 if (!CARD_MOD.Position.hasOwnProperty(key)) continue;
-                var card = new CARD_MOD.Card("Title", null, null, this.row);
+                var card = new CARD_MOD.Card(this.row);
                 this.cards.push(card);
+                this.liveCards.addCard(card);
                 card.load(CARD_MOD.Position[key]);
             }
             console.log("Section " + this.row + " cards loaded");
+        };
+
+        /**
+         * Load the content for the section and the cards it contains
+         * @param sectionContent
+         */
+        this.loadContent = function(sectionContent) {
+            // Load section title
+            this.sectionTitle.textContent = sectionContent.title;
+
+            // Load cards
+            for (var i = 0; i < Object.keys(sectionContent['cards']).length; i++) {
+                if (i < Object.keys(CARD_MOD.Position).length) {
+                    this.liveCards.get(i).loadContent(sectionContent['cards'][i]);
+                } else {
+                    this.cards.push((new CARD_MOD.Card(this.row)).loadContent(sectionContent['cards'][i]));
+                }
+            }
+        };
+
+        // Construct the section
+        this.loadSection();
+        if (this.withCards) {
+            this.loadCards();
         }
+        // Log the section generation
         console.log("Section " + this.row + " generated");
     };
 

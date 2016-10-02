@@ -22,7 +22,6 @@ var CARD_MOD = (function() {
 
         var supportText = document.createElement("DIV");
         supportText.className = "mdl-card__supporting-text";
-        supportText.textContent = "this is a test with what is going on I don't know if it will do it the right size or not but I would be prettyy unhapy if it doesn't work sadface";
         card.appendChild(supportText);
 
         var cardContent = document.createElement("DIV");
@@ -58,10 +57,7 @@ var CARD_MOD = (function() {
 
     /////////////////////////// Card Object /////////////////////////////////
 
-    my.Card = function(title, image, content, row) {
-        this.title = title;
-        this.image = image;
-        this.content = content;
+    my.Card = function(row) {
         this.row = row;
         this.card = null;
         this.position = null;
@@ -73,6 +69,7 @@ var CARD_MOD = (function() {
         this.load = function(position) {
             var card = cardTemplate.cloneNode(true);
             this.card = card;
+            this.position = position;
             var newClassName = "card mdl-card " + position;
             if (position === my.Position.CENTER) {
                 newClassName += " mdl-shadow--6dp";
@@ -82,9 +79,16 @@ var CARD_MOD = (function() {
                 newClassName += " mdl-shadow--2dp";
             }
             card.className = newClassName;
-            card.childNodes[0].childNodes[0].textContent = this.title;
             var sections = document.getElementsByClassName('content-section');
             sections[row].appendChild(card);
+        };
+
+        this.loadContent = function(cardContent) {
+            this.card.childNodes[0].childNodes[0].textContent = cardContent.name;
+            // TODO images
+            // TODO content
+            this.card.childNodes[1].textContent = cardContent.content;
+            return this.card;
         };
 
         function destroy() {

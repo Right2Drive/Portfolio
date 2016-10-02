@@ -2,19 +2,59 @@
  * Created by Brad on 2016-09-21.
  */
 
+var NUMBER_OF_SECTIONS = 5;
+var NUMBER_OF_CARD_SECTIONS = 3;
+
+var sections = [];
+var contentReady = false;
+
+function loadContent() {
+    if (!contentReady) {
+        contentReady = true;
+        return;
+    }
+    for (var i = 0; i < sectionData.length; i++) {
+        if (sectionData.length > NUMBER_OF_SECTIONS) {
+            console.log("Not enough sections");
+            return;
+        }
+        sections[i].loadContent(sectionData[i]);
+    }
+}
+
+// Get the general content
+var sectionData = null;
+RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
+    if (res === "Nothing found.") {
+        throw "Could not load json";
+    } else {
+        console.log("Response: " + res);
+        sectionData = JSON.parse(res);
+    }
+    loadContent();
+});
+
+function loadSections(next) {
+    for (var i = 0; i < NUMBER_OF_SECTIONS; i++) {
+        var section = null;
+        if (i < NUMBER_OF_CARD_SECTIONS) {
+            section = new SECTION_MOD.Section(i);
+        } else {
+            section = new SECTION_MOD.Section(i, false);
+        }
+        sections.push(section);
+    }
+    next();
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
     // Add event listener to shrink header if scrolled past a certain point
     window.addEventListener('scroll', HEADER_MOD.headerScroll);
 
-    var section1 = new SECTION_MOD.Section(0, "Projects");
-    section1.load();
-    section1.loadCards();
-    var section2 = new SECTION_MOD.Section(1, "Skills");
-    section2.load();
-    section2.loadCards();
-    var section3 = new SECTION_MOD.Section(2, "Organizations");
-    section3.load();
-    section3.loadCards();
+    loadSections(loadContent);
+
 });
 
 
