@@ -7,7 +7,7 @@ var SECTION_MOD = (function() {
        sectionTemplate = createSectionTemplate(),
        breakTemplate = createBreakTemplate();
 
-    var NUMBER_OF_CARDS = 5;
+    var NUMBER_OF_CARDS = Object.keys(CARD_MOD.Position).length;
 
    function createSectionTemplate() {
        var section = document.createElement("DIV");
@@ -43,13 +43,12 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
-    my.Section = function(row, sectionInfo) {
+    my.Section = function(row) {
         this.row = row;
-        this.sectionInfo = sectionInfo;
         this.cards = [];
-        this.liveCards = new QUEUE_MOD.Queue(6);
+        this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
 
-        var load = function(name) {
+        var loadSection = function(name) {
             var section = sectionTemplate.cloneNode(true);
 
             // Set section name
@@ -61,7 +60,7 @@ var SECTION_MOD = (function() {
             var sectionBreak = breakTemplate.cloneNode(true);
             var contents = document.getElementsByClassName("content");
             if (contents.length !== 1) {
-                console.log("There is more than one content section");
+                throw "There is more than one content section";
             }
             if (this.row !== 0) {
                 contents[0].appendChild(sectionBreak);
@@ -70,22 +69,36 @@ var SECTION_MOD = (function() {
             console.log("Section " + this.row + " loaded");
         };
 
-        var loadCards = function(cards) {
-            if (!this.sectionLoaded) {
-                return;
-            }
+        var loadCards = function() {
+
             // Loading cards
             for (var key in CARD_MOD.Position) {
                 if (!CARD_MOD.Position.hasOwnProperty(key)) continue;
-                var card = new CARD_MOD.Card("Title", null, null, this.row);
+                var card = new CARD_MOD.Card(this.row);
                 this.cards.push(card);
+                this.liveCards.addCard(card);
                 card.load(CARD_MOD.Position[key]);
             }
             console.log("Section " + this.row + " cards loaded");
         };
 
+        /**
+         * Load the content for the section and the cards it contains
+         * @param sectionContent
+         */
+        this.loadContent = function(sectionContent) {
+            for (var i = 0; i < Object.keys(sectionContent['cards']).length; i++) {
+                if (i < Object.keys(CARD_MOD.Position).length) {
+                    this.liveCards.get(i).loadContent(sectionContent['cards'][i]);
+                } else {
+                    this.cards.push((new CARD_MOD.Card(this.row)).loadContent(sectionContent['cards'][i]));
+                }
+            }
+        };
+
         var construct = function(sectionInfo) {
-            load(sectionInfo[row]['title']);
+            loadSection(sectionInfo[row]['title']);
+            loadCards();
             // Load all of the cards needed by this section
             // TODO should load them into queue until it's full
         };

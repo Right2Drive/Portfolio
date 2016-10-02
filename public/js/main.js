@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             sectionData = JSON.parse(res);
         }
     })
-
-    
 });
 
 

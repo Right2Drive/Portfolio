@@ -24,5 +24,9 @@ var QUEUE_MOD = (function() {
                queue.push(card);
            }
        };
+
+       this.get = function(i) {
+           return queue[i];
+       };
    };
 }());
