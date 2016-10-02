@@ -5,9 +5,9 @@
 var QUEUE_MOD = (function() {
    var my = {};
 
-   my.Queue = new function(length) {
+   my.Queue = function(length) {
        this.length = length;
-       var queue = []
+       var queue = [];
 
        this.pushLeft = function(item) {
            queue.unshift(item);
@@ -29,4 +29,6 @@ var QUEUE_MOD = (function() {
            return queue[i];
        };
    };
+
+   return my;
 }());

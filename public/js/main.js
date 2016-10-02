@@ -7,6 +7,20 @@ var NUMBER_OF_SECTIONS = 5;
 var sections = [];
 var contentReady = false;
 
+function loadContent() {
+    if (!contentReady) {
+        contentReady = true;
+        return;
+    }
+    for (var i = 0; i < sectionData.length; i++) {
+        if (sectionData.length > NUMBER_OF_SECTIONS) {
+            console.log("Not enough sections");
+            return;
+        }
+        sections[i].loadContent(sectionData[i]);
+    }
+}
+
 // Get the general content
 var sectionData = null;
 RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
@@ -27,25 +41,13 @@ function loadSections(next) {
     next();
 }
 
-function loadContent() {
-    if (!contentReady) {
-        contentReady = true;
-        return;
-    }
-    for (var i = 0; i < sectionData.length; i++) {
-        if (sectionData.length > NUMBER_OF_SECTIONS) {
-            console.log("Not enough sections");
-            return;
-        }
-        sections[i].loadContent(sectionData[i]);
-    }
-}
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
     // Add event listener to shrink header if scrolled past a certain point
     window.addEventListener('scroll', HEADER_MOD.headerScroll);
 
-    loadSections(loadContent());
+    loadSections(loadContent);
 
 });
 
