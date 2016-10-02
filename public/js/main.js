@@ -2,20 +2,51 @@
  * Created by Brad on 2016-09-21.
  */
 
+var NUMBER_OF_SECTIONS = 5;
+
+var sections = [];
+var contentReady = false;
+
+// Get the general content
+var sectionData = null;
+RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
+    if (res === "Nothing found.") {
+        throw "Could not load json";
+    } else {
+        console.log("Response: " + res);
+        sectionData = JSON.parse(res);
+    }
+    loadContent();
+});
+
+function loadSections(next) {
+    for (var i = 0; i < NUMBER_OF_SECTIONS; i++) {
+        var section = new SECTION_MOD.Section(i);
+        sections.push(section);
+    }
+    next();
+}
+
+function loadContent() {
+    if (!contentReady) {
+        contentReady = true;
+        return;
+    }
+    for (var i = 0; i < sectionData.length; i++) {
+        if (sectionData.length > NUMBER_OF_SECTIONS) {
+            console.log("Not enough sections");
+            return;
+        }
+        sections[i].loadContent(sectionData[i]);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
     // Add event listener to shrink header if scrolled past a certain point
     window.addEventListener('scroll', HEADER_MOD.headerScroll);
 
-    // Get the general content
-    var sectionData = null;
-    RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
-        if (res === "Nothing found.") {
-            throw "Could not load json";
-        } else {
-            console.log("Response: " + res);
-            sectionData = JSON.parse(res);
-        }
-    })
+    loadSections(loadContent());
+
 });
 
 

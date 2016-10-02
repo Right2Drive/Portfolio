@@ -48,13 +48,12 @@ var SECTION_MOD = (function() {
         this.cards = [];
         this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
 
-        var loadSection = function(name) {
+        var loadSection = function() {
             var section = sectionTemplate.cloneNode(true);
 
             // Set section name
             var sectionTitle = document.createElement("SPAN");
             sectionTitle.className = "section-title";
-            sectionTitle.textContent = name;
             section.appendChild(sectionTitle);
 
             var sectionBreak = breakTemplate.cloneNode(true);
@@ -87,6 +86,9 @@ var SECTION_MOD = (function() {
          * @param sectionContent
          */
         this.loadContent = function(sectionContent) {
+            // Load section title
+
+            // Load cards
             for (var i = 0; i < Object.keys(sectionContent['cards']).length; i++) {
                 if (i < Object.keys(CARD_MOD.Position).length) {
                     this.liveCards.get(i).loadContent(sectionContent['cards'][i]);
@@ -96,11 +98,9 @@ var SECTION_MOD = (function() {
             }
         };
 
-        var construct = function(sectionInfo) {
-            loadSection(sectionInfo[row]['title']);
+        var construct = function() {
+            loadSection();
             loadCards();
-            // Load all of the cards needed by this section
-            // TODO should load them into queue until it's full
         };
 
         // Call the constructor
