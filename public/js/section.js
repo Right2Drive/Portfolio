@@ -48,7 +48,7 @@ var SECTION_MOD = (function() {
         this.cards = [];
         this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
 
-        var loadSection = function() {
+        this.loadSection = function() {
             var section = sectionTemplate.cloneNode(true);
 
             // Set section name
@@ -68,7 +68,7 @@ var SECTION_MOD = (function() {
             console.log("Section " + this.row + " loaded");
         };
 
-        var loadCards = function() {
+        this.loadCards = function() {
 
             // Loading cards
             for (var key in CARD_MOD.Position) {
@@ -86,7 +86,7 @@ var SECTION_MOD = (function() {
          * @param sectionContent
          */
         this.loadContent = function(sectionContent) {
-            // Load section title
+            // Load section title TODO
 
             // Load cards
             for (var i = 0; i < Object.keys(sectionContent['cards']).length; i++) {
@@ -98,13 +98,9 @@ var SECTION_MOD = (function() {
             }
         };
 
-        var construct = function() {
-            loadSection();
-            loadCards();
-        };
-
-        // Call the constructor
-        construct();
+        // Construct the section
+        this.loadSection();
+        this.loadCards();
         // Log the section generation
         console.log("Section " + this.row + " generated");
     };
