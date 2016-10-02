@@ -69,6 +69,7 @@ var CARD_MOD = (function() {
         this.load = function(position) {
             var card = cardTemplate.cloneNode(true);
             this.card = card;
+            this.position = position;
             var newClassName = "card mdl-card " + position;
             if (position === my.Position.CENTER) {
                 newClassName += " mdl-shadow--6dp";
@@ -86,6 +87,7 @@ var CARD_MOD = (function() {
             this.card.childNodes[0].childNodes[0].textContent = cardContent.name;
             // TODO images
             // TODO content
+            this.card.childNodes[1].textContent = cardContent.content;
             return this.card;
         };
 

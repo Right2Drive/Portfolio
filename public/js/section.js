@@ -43,10 +43,16 @@ var SECTION_MOD = (function() {
        return buttonWrapper;
    }
 
-    my.Section = function(row) {
+    my.Section = function(row, withCards) {
+        if (typeof(withCards) === 'undefined') {
+            this.withCards = true;
+        } else {
+            this.withCards = withCards;
+        }
         this.row = row;
         this.cards = [];
         this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
+        this.sectionTitle = null;
 
         this.loadSection = function() {
             var section = sectionTemplate.cloneNode(true);
@@ -55,6 +61,7 @@ var SECTION_MOD = (function() {
             var sectionTitle = document.createElement("SPAN");
             sectionTitle.className = "section-title";
             section.appendChild(sectionTitle);
+            this.sectionTitle = sectionTitle;
 
             var sectionBreak = breakTemplate.cloneNode(true);
             var contents = document.getElementsByClassName("content");
@@ -86,7 +93,8 @@ var SECTION_MOD = (function() {
          * @param sectionContent
          */
         this.loadContent = function(sectionContent) {
-            // Load section title TODO
+            // Load section title
+            this.sectionTitle.textContent = sectionContent.title;
 
             // Load cards
             for (var i = 0; i < Object.keys(sectionContent['cards']).length; i++) {
@@ -100,7 +108,9 @@ var SECTION_MOD = (function() {
 
         // Construct the section
         this.loadSection();
-        this.loadCards();
+        if (this.withCards) {
+            this.loadCards();
+        }
         // Log the section generation
         console.log("Section " + this.row + " generated");
     };

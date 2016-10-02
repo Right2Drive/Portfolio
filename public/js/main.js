@@ -3,6 +3,7 @@
  */
 
 var NUMBER_OF_SECTIONS = 5;
+var NUMBER_OF_CARD_SECTIONS = 3;
 
 var sections = [];
 var contentReady = false;
@@ -35,7 +36,12 @@ RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
 
 function loadSections(next) {
     for (var i = 0; i < NUMBER_OF_SECTIONS; i++) {
-        var section = new SECTION_MOD.Section(i);
+        var section = null;
+        if (i < NUMBER_OF_CARD_SECTIONS) {
+            section = new SECTION_MOD.Section(i);
+        } else {
+            section = new SECTION_MOD.Section(i, false);
+        }
         sections.push(section);
     }
     next();
