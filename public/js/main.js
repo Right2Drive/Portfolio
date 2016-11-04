@@ -14,9 +14,9 @@ function loadContent() {
         return;
     }
     for (var i = 0; i < sectionData.length; i++) {
-        if (sectionData.length > NUMBER_OF_SECTIONS) {
+        if (i >= NUMBER_OF_SECTIONS) {
             console.log("Not enough sections");
-            return;
+            break;
         }
         sections[i].loadContent(sectionData[i]);
     }
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     loadSections(loadContent);
 
+
 });
 
 
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // TODO if not supported (ie. IE 8 or below), output a message to user
 /*
     FOR:
-        CSS VARIABLES
+        CSS CALC
         THE ABOVE EVENT LISTENER
         TBC
  */

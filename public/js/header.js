@@ -7,7 +7,7 @@ var HEADER_MOD = (function() {
 
     my.headerScroll = function() {
         var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-            shrinkOn = 80,
+            shrinkOn = 50,
             header = document.querySelector('header');
 
         if (distanceY > shrinkOn) {
