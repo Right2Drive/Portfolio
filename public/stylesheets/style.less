@@ -1,0 +1,243 @@
+@primary-color: #212121;
+@secondary-color: #424242;
+@background-color: #303030;
+@supporting-color: #282828;
+@primary-font: white;
+@secondary-font: rgba(255, 255, 255, 0.7);
+@hint-font: rgba(255, 255, 255, 0.5);
+
+@shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+@shadow-med: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+@shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+@shadow-darker: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+@shadow-darkest: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+
+/*
+    Header Style
+*/
+
+.transition(@time: 0.5s) {
+    -webkit-transition: all @time;
+    -moz-transition: all @time;
+    -ms-transition: all @time;
+    -o-transition: all @time;
+    transition: all @time;
+}
+
+.header-transition {
+    .transition;
+}
+
+header {
+    &.shrink .header {
+        height: 70px;
+
+        .title-wrapper {
+            top: 25px;
+        }
+
+        .header-title {
+            font-size: 220%;
+        }
+    }
+
+    &.expand .header {
+        height: 210px;
+
+        .title-wrapper {
+            top: 150px;
+        }
+
+        .header-title {
+            font-size: 280%;
+        }
+    }
+}
+
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+
+    /* Colors and shadows*/
+    box-shadow: @shadow-dark;
+    background-color: @primary-color;
+    color: @primary-font;
+}
+
+.nav-list {
+    float: right;
+    position: relative;
+    top: 10px;
+}
+
+.header .top {
+    height: 30%;
+}
+
+.header .bottom {
+    position: relative;
+    top: 70px;
+}
+
+.title-wrapper {
+    position: absolute;
+
+    left: 5%;
+    width: 320px;
+}
+
+.header-title {
+    /* Fonts */
+    font-size: 280%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.nav-item {
+    list-style: none;
+}
+
+.nav-item a {
+    text-align: right;
+
+    /* Fonts */
+    color: @primary-font;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    text-transform: uppercase;
+}
+
+.nav-item a:hover {
+    color: @secondary-font;
+}
+
+
+/*
+    Content
+*/
+
+body {
+    margin: 0 0 0 0;
+    background-color: @background-color;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.content {
+
+}
+
+.header-filler {
+    height: 210px;
+    width: 100%;
+}
+
+/* Section Style*/
+
+.content-section {
+    position: relative;
+    height: 650px;
+    width: 100%;
+}
+
+.section-break {
+    background: @supporting-color no-repeat scroll center;
+    width: 100%;
+    height: 1px;
+    box-shadow: @shadow-light;
+}
+
+.section-title {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    color: @secondary-font;
+    font-family: 'Roboto', sans-serif;
+    font-size: 60px;
+}
+
+/*
+    Card Style
+*/
+
+.card.mdl-card {
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    background: @secondary-color;
+    .transition(0.2s);
+
+    &:hover {
+        box-shadow: @shadow-dark;
+        z-index: 100;
+    }
+}
+
+.card-center.mdl-card {
+    left: calc(~'50% - 200px');
+    top: 200px;
+    z-index: 10;
+}
+
+.layer-middle.mdl-card {
+    top: 160px;
+    z-index: 8;
+}
+
+.layer-back.mdl-card {
+    top: 100px;
+    z-index: 6;
+}
+
+.layer-hidden.mdl-card {
+    visibility: hidden;
+}
+
+.card-left.mdl-card {
+    left: calc(~'25% - 200px');
+}
+
+.card-right.mdl-card {
+    right: calc(~'25% - 200px');
+}
+
+.card-far-left.mdl-card {
+    left: -10%;
+}
+
+.card-far-right.mdl-card {
+    right: -10%;
+}
+
+.card > .mdl-card__title {
+    color: @primary-font;
+    background:
+            url('../images/resume.png') bottom right 15% no-repeat @primary-color;
+}
+
+.card > .mdl-card__supporting-text {
+    color: @secondary-font;
+}
+
+.card .mdl-button {
+    color: lightblue;
+}
+
+.content-section .button-wrapper {
+    position: absolute;
+    visibility: hidden;
+}
+
+.content-section .button-right {
+    right: 0;
+}
+
+.content-section .button-left {
+    left: 0;
+}

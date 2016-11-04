@@ -1,235 +1,178 @@
-:root {
-    /* Colors */
-    --primary-color: #212121;
-    --secondary-color: #424242;
-    --background-color: #303030;
-    --supporting-color: #282828;
-    --primary-font: white;
-    --secondary-font: rgba(255, 255, 255, 0.7);
-    --hint-font: rgba(255, 255, 255, 0.5);
-
-    /* Shadows */
-    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --shadow-med: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    --shadow-darker: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    --shadow-darkest: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-}
-
 /*
     Header Style
 */
-
-.header-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    text-align: center;
-
-    /* Colors and shadows*/
-    box-shadow: var(--shadow-dark);
-    background-color: var(--primary-color);
-    color: var(--primary-font);
-}
-
-header.shrink .header {
-    height: 70px;
-}
-
-header.expand .header {
-    height: 210px;
-}
-
 .header-transition {
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
-
+header.shrink .header {
+  height: 70px;
+}
+header.shrink .header .title-wrapper {
+  top: 25px;
+}
+header.shrink .header .header-title {
+  font-size: 220%;
+}
+header.expand .header {
+  height: 210px;
+}
+header.expand .header .title-wrapper {
+  top: 150px;
+}
+header.expand .header .header-title {
+  font-size: 280%;
+}
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  text-align: center;
+  /* Colors and shadows*/
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: #212121;
+  color: white;
+}
 .nav-list {
-    float: right;
-    position: relative;
-    top: 10px;
+  float: right;
+  position: relative;
+  top: 10px;
 }
-
 .header .top {
-    height: 30%;
+  height: 30%;
 }
-
 .header .bottom {
-    position: relative;
-    top: 70px;
+  position: relative;
+  top: 70px;
 }
-
 .title-wrapper {
-    position: absolute;
-
-    left: 5%;
-    width: 320px;
+  position: absolute;
+  left: 5%;
+  width: 320px;
 }
-
-header.shrink .title-wrapper {
-    top: 25px;
-}
-
-header.expand .title-wrapper {
-    top: 150px;
-}
-
 .header-title {
-    /* Fonts */
-    font-size: 280%;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+  /* Fonts */
+  font-size: 280%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
-
-header.shrink .header-title {
-    font-size: 220%;
-}
-
-header.expand .header-title {
-    font-size: 280%;
-}
-
 .nav-item {
-    list-style: none;
+  list-style: none;
 }
-
 .nav-item a {
-    text-align: right;
-
-    /* Fonts */
-    color: var(--primary-font);
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: medium;
-    text-transform: uppercase;
+  text-align: right;
+  /* Fonts */
+  color: white;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: medium;
+  text-transform: uppercase;
 }
-
 .nav-item a:hover {
-    color: var(--secondary-font);
+  color: rgba(255, 255, 255, 0.7);
 }
-
-
 /*
     Content
 */
-
 body {
-    margin: 0 0 0 0;
-    background-color: var(--background-color);
-    max-width: 100%;
-    overflow-x: hidden;
+  margin: 0 0 0 0;
+  background-color: #303030;
+  max-width: 100%;
+  overflow-x: hidden;
 }
-
-.content {
-
-}
-
 .header-filler {
-    height: 210px;
-    width: 100%;
+  height: 210px;
+  width: 100%;
 }
-
 /* Section Style*/
-
 .content-section {
-    position: relative;
-    height: 650px;
-    width: 100%;
+  position: relative;
+  height: 650px;
+  width: 100%;
 }
-
 .section-break {
-    background: var(--supporting-color) no-repeat scroll center;
-    width: 100%;
-    height: 1px;
-    box-shadow: var(--shadow-light);
+  background: #282828 no-repeat scroll center;
+  width: 100%;
+  height: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-
 .section-title {
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    text-align: center;
-    color: var(--secondary-font);
-    font-family: 'Roboto', sans-serif;
-    font-size: 60px;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Roboto', sans-serif;
+  font-size: 60px;
 }
-
 /*
     Card Style
 */
-
 .card.mdl-card {
-    width: 400px;
-    height: 350px;
-    position: absolute;
-    background: var(--secondary-color);
+  width: 400px;
+  height: 350px;
+  position: absolute;
+  background: #424242;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
 }
-
+.card.mdl-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  z-index: 100;
+}
 .card-center.mdl-card {
-    left: calc(50% - 200px);
-    top: 200px;
-    z-index: 10;
+  left: calc(50% - 200px);
+  top: 200px;
+  z-index: 10;
 }
-
 .layer-middle.mdl-card {
-    top: 160px;
-    z-index: 8;
+  top: 160px;
+  z-index: 8;
 }
-
 .layer-back.mdl-card {
-    top: 100px;
-    z-index: 6;
+  top: 100px;
+  z-index: 6;
 }
-
 .layer-hidden.mdl-card {
-    visibility: hidden;
+  visibility: hidden;
 }
-
 .card-left.mdl-card {
-    left: calc(25% - 200px);
+  left: calc(25% - 200px);
 }
-
 .card-right.mdl-card {
-    right: calc(25% - 200px);
+  right: calc(25% - 200px);
 }
-
 .card-far-left.mdl-card {
-    left: -10%;
+  left: -10%;
 }
-
 .card-far-right.mdl-card {
-    right: -10%;
+  right: -10%;
 }
-
 .card > .mdl-card__title {
-    color: var(--primary-font);
-    background:
-            url('../images/resume.png') bottom right 15% no-repeat var(--primary-color);
+  color: white;
+  background: url('../images/resume.png') bottom right 15% no-repeat #212121;
 }
-
 .card > .mdl-card__supporting-text {
-    color: var(--secondary-font);
+  color: rgba(255, 255, 255, 0.7);
 }
-
 .card .mdl-button {
-    color: lightblue;
+  color: lightblue;
 }
-
 .content-section .button-wrapper {
-    position: absolute;
-    visibility: hidden;
+  position: absolute;
+  visibility: hidden;
 }
-
 .content-section .button-right {
-    right: 0;
+  right: 0;
 }
-
 .content-section .button-left {
-    left: 0;
+  left: 0;
 }
