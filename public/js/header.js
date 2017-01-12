@@ -10,11 +10,7 @@ var HEADER_MOD = (function() {
             shrinkOn = 50,
             header = document.querySelector('header');
 
-        if (distanceY > shrinkOn) {
-            header.className = "shrink";
-        } else {
-            header.className = "expand";
-        }
+        header.className = (distanceY > shrinkOn) ? "shrink" : "expand";
     };
 
     return my;

@@ -37,11 +37,7 @@ RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
 function loadSections(next) {
     for (var i = 0; i < NUMBER_OF_SECTIONS; i++) {
         var section = null;
-        if (i < NUMBER_OF_CARD_SECTIONS) {
-            section = new SECTION_MOD.Section(i);
-        } else {
-            section = new SECTION_MOD.Section(i, false);
-        }
+        section = (i < NUMBER_OF_CARD_SECTIONS) ? new SECTION_MOD.Section(i) : new SECTION_MOD.Section(i, false);
         sections.push(section);
     }
     next();
@@ -54,8 +50,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     window.addEventListener('scroll', HEADER_MOD.headerScroll);
 
     loadSections(loadContent);
-
-
 });
 
 

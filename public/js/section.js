@@ -44,11 +44,7 @@ var SECTION_MOD = (function() {
    }
 
     my.Section = function(row, withCards) {
-        if (typeof(withCards) === 'undefined') {
-            this.withCards = true;
-        } else {
-            this.withCards = withCards;
-        }
+        this.withCards = (typeof(withCards) === 'undefined') ? true : withCards;
         this.row = row;
         this.cards = [];
         this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
