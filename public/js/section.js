@@ -2,61 +2,64 @@
  * Created by Brad on 2016-09-23.
  */
 
-var SECTION_MOD = (function() {
-   var my = {},
-       sectionTemplate = createSectionTemplate(),
-       breakTemplate = createBreakTemplate();
+var SECTION_MOD = (function () {
+    var my = {},
+        SECTION_CLASS = 'content-section',
+        BREAK_CLASS = 'section-break',
+        TITLE_CLASS = 'section-title',
+        sectionTemplate = createSectionTemplate(SECTION_CLASS),
+        breakTemplate = createBreakTemplate(BREAK_CLASS);
 
     var NUMBER_OF_CARDS = Object.keys(CARD_MOD.Position).length;
 
-   function createSectionTemplate() {
-       var section = document.createElement("DIV");
-        section.className = "content-section";
+    function createSectionTemplate(className) {
+        var section = document.createElement('DIV');
+        section.className = className;
+        return section;
+    }
 
-       var buttonLeft = createButtonTemplate("left");
-       section.appendChild(buttonLeft);
-       var buttonRight = createButtonTemplate("right");
-       section.appendChild(buttonRight);
+    function createBreakTemplate(className) {
+        var sectionBreak = document.createElement('DIV');
+        sectionBreak.className = className;
+        return sectionBreak;
+    }
 
-       return section;
-   }
+    function createButtonTemplate(side) {
+        var buttonWrapper = document.createElement('DIV');
+        buttonWrapper.className = "button-wrapper button-" + side;
 
-   function createBreakTemplate() {
-       var sectionBreak = document.createElement("DIV");
-       sectionBreak.className = "section-break";
-       return sectionBreak;
-   }
+        var button = document.createElement("BUTTON");
+        button.className = "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored";
+        buttonWrapper.appendChild(button);
 
-   function createButtonTemplate(side) {
-       var buttonWrapper = document.createElement("DIV");
-       buttonWrapper.className = "button-wrapper button-" + side;
+        var buttonImage = document.createElement('I');
+        buttonImage.className = "material-icons";
+        buttonImage.textContent = "keyboard_arrow_" + side + "_black";
+        button.appendChild(buttonImage);
+        return buttonWrapper;
+    }
 
-       var button = document.createElement("BUTTON");
-       button.className = "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored";
-       buttonWrapper.appendChild(button);
-
-       var buttonImage = document.createElement("I");
-       buttonImage.className = "material-icons";
-       buttonImage.textContent = "keyboard_arrow_" + side + "_black";
-       button.appendChild(buttonImage);
-       return buttonWrapper;
-   }
-
-    my.Section = function(row, withCards) {
-        this.withCards = (typeof(withCards) === 'undefined') ? true : withCards;
+    my.Section = function (row, withCards) {
+        this.withCards = (typeof (withCards) === 'undefined') ? true : withCards;
         this.row = row;
         this.cards = [];
         this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
         this.sectionTitle = null;
 
-        this.loadSection = function() {
+        this.loadSection = function () {
             var section = sectionTemplate.cloneNode(true);
 
             // Set section name
-            var sectionTitle = document.createElement("SPAN");
-            sectionTitle.className = "section-title";
+            var sectionTitle = document.createElement('SPAN');
+            sectionTitle.className = TITLE_CLASS;
             section.appendChild(sectionTitle);
             this.sectionTitle = sectionTitle;
+            if (this.withCards) {
+                var buttonLeft = createButtonTemplate('left');
+                section.appendChild(buttonLeft);
+                var buttonRight = createButtonTemplate('right');
+                section.appendChild(buttonRight);
+            }
 
             var sectionBreak = breakTemplate.cloneNode(true);
             var contents = document.getElementsByClassName("content");
@@ -70,7 +73,7 @@ var SECTION_MOD = (function() {
             console.log("Section " + this.row + " loaded");
         };
 
-        this.loadCards = function() {
+        this.loadCards = function () {
 
             // Loading cards
             for (var key in CARD_MOD.Position) {
@@ -87,7 +90,7 @@ var SECTION_MOD = (function() {
          * Load the content for the section and the cards it contains
          * @param sectionContent
          */
-        this.loadContent = function(sectionContent) {
+        this.loadContent = function (sectionContent) {
             // Load section title
             this.sectionTitle.textContent = sectionContent.title;
 
@@ -110,5 +113,5 @@ var SECTION_MOD = (function() {
         console.log("Section " + this.row + " generated");
     };
 
-   return my;
-}());
+    return my;
+} ());
