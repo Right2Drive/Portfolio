@@ -171,11 +171,20 @@ body {
 }
 .content-section .button-wrapper {
   position: absolute;
-  visibility: hidden;
+  top: 300px;
+  z-index: 999;
+}
+.content-section .button-wrapper .mdl-button {
+  background-color: #9E9E9E;
+  height: 75px;
+  width: 75px;
+}
+.content-section .button-wrapper .mdl-button .material-icons {
+  color: black;
 }
 .content-section .button-right {
-  right: 0;
+  right: 30px;
 }
 .content-section .button-left {
-  left: 0;
+  left: 30px;
 }

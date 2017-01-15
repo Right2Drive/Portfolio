@@ -27,13 +27,12 @@ var SECTION_MOD = (function() {
        return sectionBreak;
    }
 
-   // TODO remove buttons if not being used
    function createButtonTemplate(side) {
        var buttonWrapper = document.createElement("DIV");
        buttonWrapper.className = "button-wrapper button-" + side;
 
        var button = document.createElement("BUTTON");
-       button.className = "mdl-button mdl-js-button mdl-button--fab";
+       button.className = "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored";
        buttonWrapper.appendChild(button);
 
        var buttonImage = document.createElement("I");

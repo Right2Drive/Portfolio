@@ -1,5 +1,6 @@
 @primary-color: #212121;
 @secondary-color: #424242;
+@tertiary-color: #9E9E9E;
 @background-color: #303030;
 @supporting-color: #282828;
 @primary-font: white;
@@ -11,6 +12,9 @@
 @shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 @shadow-darker: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 @shadow-darkest: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+
+@button-offset: 30px;
+@button-dimension: 75px;
 
 /*
     Header Style
@@ -233,13 +237,24 @@ body {
 
 .content-section .button-wrapper {
     position: absolute;
-    visibility: hidden;
+    top: 300px;
+    z-index: 999;
+
+    .mdl-button {
+        background-color: @tertiary-color;
+        height: @button-dimension;
+        width: @button-dimension;
+
+        .material-icons {
+            color: black;
+        }
+    }
 }
 
 .content-section .button-right {
-    right: 0;
+    right: @button-offset;
 }
 
 .content-section .button-left {
-    left: 0;
+    left: @button-offset;
 }
