@@ -89,6 +89,9 @@ var CARD_MOD = (function() {
         this.card = null;
         this.position = null;
 
+        var that = this;
+        var BACKGROUND_URL = "url('%s')";
+
         this.shift = function(position) {
             // Change classname to new position
             this.card.className = getClassName(position);
@@ -104,12 +107,21 @@ var CARD_MOD = (function() {
         };
 
         this.loadContent = function(cardContent) {
+            // Set the name
             this.card.childNodes[0].childNodes[0].textContent = cardContent.name;
-            // TODO images
+
+            // Set the image
+            this.card.childNodes[0].style.setProperty('background-image', getBackground(cardContent.image));
+            
             // Set text content
             this.card.childNodes[1].textContent = cardContent.content;
+
             return this.card;
         };
+
+        function getBackground(image) {
+            return BACKGROUND_URL.replace("%s", image);
+        }
 
         function destroy() {
             if (this.card) {

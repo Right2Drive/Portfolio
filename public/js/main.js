@@ -28,7 +28,6 @@ RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
     if (res === "Nothing found.") {
         throw "Could not load json";
     } else {
-        console.log("Response: " + res);
         sectionData = JSON.parse(res);
     }
     loadContent();

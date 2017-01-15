@@ -158,7 +158,10 @@ body {
 }
 .card > .mdl-card__title {
   color: white;
-  background: url('../images/resume.png') bottom right 15% no-repeat #212121;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #212121;
+  background-position-x: 90%;
 }
 .card > .mdl-card__supporting-text {
   color: rgba(255, 255, 255, 0.7);
