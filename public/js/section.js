@@ -45,6 +45,12 @@ var SECTION_MOD = (function () {
         this.cards = [];
         this.liveCards = new QUEUE_MOD.Queue(NUMBER_OF_CARDS);
         this.sectionTitle = null;
+        
+        var that = this;
+
+        this.shiftCards = function(direction, units) {
+            console.log("moving cards " + units + " units to the " + direction);
+        }
 
         this.loadSection = function () {
             var section = sectionTemplate.cloneNode(true);
@@ -56,8 +62,14 @@ var SECTION_MOD = (function () {
             this.sectionTitle = sectionTitle;
             if (this.withCards) {
                 var buttonLeft = createButtonTemplate('left');
+                buttonLeft.addEventListener('click', function() {
+                    that.shiftCards(CARD_MOD.Direction.LEFT, 1);
+                });
                 section.appendChild(buttonLeft);
                 var buttonRight = createButtonTemplate('right');
+                buttonRight.addEventListener('click', function() {
+                    that.shiftCards(CARD_MOD.Direction.RIGHT, 1);
+                });
                 section.appendChild(buttonRight);
             }
 
