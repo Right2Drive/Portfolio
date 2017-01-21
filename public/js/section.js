@@ -111,7 +111,8 @@ var SECTION_MOD = (function () {
                 if (i < Object.keys(CARD_MOD.Position).length) {
                     this.liveCards.get(i).loadContent(sectionContent['cards'][i]);
                 } else {
-                    this.cards.push((new CARD_MOD.Card(this.row)).loadContent(sectionContent['cards'][i]));
+                    var newCard = new CARD_MOD.Card(this.row);
+                    this.cards.push(newCard.loadContent(sectionContent['cards'][i]));
                 }
             }
         };

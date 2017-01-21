@@ -86,37 +86,46 @@ var CARD_MOD = (function() {
 
     my.Card = function(row) {
         this.row = row;
-        this.card = null;
+        this.element = null;
         this.position = null;
+        this.image = null;
+        this.description = null;
+        this.title = null;
 
         var that = this;
         var BACKGROUND_URL = "url('%s')";
 
         this.shift = function(position) {
             // Change classname to new position
-            this.card.className = getClassName(position);
+            this.element.className = getClassName(position);
         };
 
         this.load = function(position) {
-            var card = cardTemplate.cloneNode(true);
-            this.card = card;
+            var element = cardTemplate.cloneNode(true);
+            this.element = element;
             this.position = position;
-            card.className = getClassName(position);
+            element.className = getClassName(position);
             var sections = document.getElementsByClassName('content-section');
-            sections[row].appendChild(card);
+            sections[row].appendChild(element);
         };
 
         this.loadContent = function(cardContent) {
-            // Set the name
-            this.card.childNodes[0].childNodes[0].textContent = cardContent.name;
-
-            // Set the image
-            this.card.childNodes[0].style.setProperty('background-image', getBackground(cardContent.image));
+            this.title = cardContent.name;
+            this.description = cardContent.content;
+            this.image = getBackground(cardContent.image);
             
-            // Set text content
-            this.card.childNodes[1].textContent = cardContent.content;
+            if (this.element) {
+                // Set the name
+                this.element.childNodes[0].childNodes[0].textContent = this.title;
 
-            return this.card;
+                // Set the image
+                this.element.childNodes[0].style.setProperty('background-image', this.image);
+                
+                // Set text content
+                this.element.childNodes[1].textContent = this.description;
+            }
+            
+            return this;
         };
 
         function getBackground(image) {
@@ -124,8 +133,8 @@ var CARD_MOD = (function() {
         }
 
         function destroy() {
-            if (this.card) {
-                this.card.parentElement.removeChild(this.card);
+            if (this.element) {
+                this.element.parentElement.removeChild(this.element);
             }
         }
 
