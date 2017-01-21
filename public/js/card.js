@@ -84,13 +84,14 @@ var CARD_MOD = (function() {
 
     /////////////////////////// Card Object /////////////////////////////////
 
-    my.Card = function(row) {
+    my.Card = function(row, index) {
         this.row = row;
         this.element = null;
         this.position = null;
         this.image = null;
         this.description = null;
         this.title = null;
+        this.index = index;
 
         var that = this;
         var BACKGROUND_URL = "url('%s')";

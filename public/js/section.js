@@ -50,6 +50,25 @@ var SECTION_MOD = (function () {
 
         this.shiftCards = function(direction, units) {
             console.log("moving cards " + units + " units to the " + direction);
+
+            var i;
+            var index;
+            var check;
+
+            for (i = 0; i < units; i++) {
+                // Determine the index of the card to be added
+                check = (direction === CARD_MOD.Direction.LEFT);
+                index = check ? this.liveCards.get(0).index : this.liveCards.get(this.liveCards.length - 1).index;
+                if (index >= this.cards.length) {
+                    index = 0;
+                }
+                else if (index < 0) {
+                    index = this.cards.length - 1;
+                }
+                (check ? this.liveCards.pushRight(this.cards[index]) : this.liveCards.pushLeft(this.cards[index])).destroy();
+            }
+
+            console.log('done');
         }
 
         this.loadSection = function () {
@@ -90,7 +109,7 @@ var SECTION_MOD = (function () {
             // Loading cards
             for (var key in CARD_MOD.Position) {
                 if (!CARD_MOD.Position.hasOwnProperty(key)) continue;
-                var card = new CARD_MOD.Card(this.row);
+                var card = new CARD_MOD.Card(this.row, this.cards.length);
                 this.cards.push(card);
                 this.liveCards.addCard(card);
                 card.load(CARD_MOD.Position[key]);
@@ -111,7 +130,7 @@ var SECTION_MOD = (function () {
                 if (i < Object.keys(CARD_MOD.Position).length) {
                     this.liveCards.get(i).loadContent(sectionContent['cards'][i]);
                 } else {
-                    var newCard = new CARD_MOD.Card(this.row);
+                    var newCard = new CARD_MOD.Card(this.row, this.cards.length);
                     this.cards.push(newCard.loadContent(sectionContent['cards'][i]));
                 }
             }
