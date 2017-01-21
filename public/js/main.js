@@ -14,9 +14,9 @@ function loadContent() {
         return;
     }
     for (var i = 0; i < sectionData.length; i++) {
-        if (sectionData.length > NUMBER_OF_SECTIONS) {
+        if (i >= NUMBER_OF_SECTIONS) {
             console.log("Not enough sections");
-            return;
+            break;
         }
         sections[i].loadContent(sectionData[i]);
     }
@@ -28,7 +28,6 @@ RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
     if (res === "Nothing found.") {
         throw "Could not load json";
     } else {
-        console.log("Response: " + res);
         sectionData = JSON.parse(res);
     }
     loadContent();
@@ -37,11 +36,7 @@ RETRIEVE_MOD.loadJSON('/content/content.json', function(res) {
 function loadSections(next) {
     for (var i = 0; i < NUMBER_OF_SECTIONS; i++) {
         var section = null;
-        if (i < NUMBER_OF_CARD_SECTIONS) {
-            section = new SECTION_MOD.Section(i);
-        } else {
-            section = new SECTION_MOD.Section(i, false);
-        }
+        section = (i < NUMBER_OF_CARD_SECTIONS) ? new SECTION_MOD.Section(i) : new SECTION_MOD.Section(i, false);
         sections.push(section);
     }
     next();
@@ -54,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     window.addEventListener('scroll', HEADER_MOD.headerScroll);
 
     loadSections(loadContent);
-
 });
 
 
@@ -62,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // TODO if not supported (ie. IE 8 or below), output a message to user
 /*
     FOR:
-        CSS VARIABLES
+        CSS CALC
         THE ABOVE EVENT LISTENER
         TBC
  */
